@@ -45,7 +45,7 @@ który porównuje dokumenty i zapamiętuje podobieństwo dwóch dokumentów w ca
 Relacje między dwoma dokumentami tworzone są biorąc pod uwagę:
 * wiedzę ekspercką - 'eksperci'/'wikipedyści' sami zaznaczają które tematy są ze sobą powiązane, relacja wygląda mniej więcej tak:
 
-    [id_dokumentu1, id_dokumentu2, wartość_podobieństwa_ujemna_lub_dodatnia] 
+        [id_dokumentu1, id_dokumentu2, wartość_podobieństwa_ujemna_lub_dodatnia] 
     
 * podobieństwo tekstowe dokumentów - WORKER sprawdza czy dwa dokumenty zawierają podobne słowa i wpisuje tą do cache.
 * interakcje użytkowników - system zbiera informacje jakie zapytania obślużył system i jeżeli np. wszyscy użytkownicy wybierają naraz dokument Facebook i dokument Google, system kojarzy te fakty i automatycznie rekomenduje Google jeżeli zaznaczyło się Facebook.
