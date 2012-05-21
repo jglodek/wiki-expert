@@ -18,6 +18,7 @@ Wywołuje za pomocą AJAX'a zapytania do serwera w takiej formie:
     [[zaznaczone_pole1,zaznaczone_pole2,...,zaznaczone_poleN], kategoria_zapytania, query_string]
   
   gdzie:
+      
       zaznaczone_poleX - to id któregoś z już zaznaczonych elementów w kolumnach (może być puste)
       kategoria_zapytania - to nazwa kolumny w której chcemy odświeżyć wyniki (app, risk, fix)
       query_string - to tekst z paska wyszukiwania danej kolumny (może być puste)
@@ -27,6 +28,7 @@ Wywołuje za pomocą AJAX'a zapytania do serwera w takiej formie:
     [[zaznaczone_pola],query_string, id_wybranego_dokumentu]
   
   gdzie:
+    
     zaznaczone_pola - to id różnych aktualnie zaznaczonych pól (może być puste)
     query_string - to tekst z paska wyszukiwania danej kolumny (może być puste)
     id_wybranego_elementu - to id dokumentu którego dane będziemy ściągać
