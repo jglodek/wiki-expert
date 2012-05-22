@@ -39,7 +39,6 @@ Wywołuje za pomocą AJAX'a zapytania do serwera w takiej formie:
 Relacje między dokumentami tworzone są parę razy dziennie przez uruchomienie specjalnego WORKERA,
 który porównuje dokumenty i zapamiętuje podobieństwo dwóch dokumentów w cache.
 
-    
 ### Relacje
 
 Relacje między dwoma dokumentami tworzone są biorąc pod uwagę:
@@ -51,3 +50,13 @@ Relacje między dwoma dokumentami tworzone są biorąc pod uwagę:
 * interakcje użytkowników - system zbiera informacje jakie zapytania obślużył system i jeżeli np. wszyscy użytkownicy wybierają naraz dokument Facebook i dokument Google, system kojarzy te fakty i automatycznie rekomenduje Google jeżeli zaznaczyło się Facebook.
 
 System uwzględnia również pasek wyszukiwania podczas wyświetlania wyników.
+
+
+### JOBS - prace WORKERA
+
+* prepare
+* * prepare:expert - tworzy cache dla danych ekspertów
+* * prepare:ui - tworzy cache analizując dane z interfejsu użytkownika (zapytania)
+* * prepare:semantic - tworzy cache porównując teksty dokumentów
+* * prepare:join - łączy wcześniejsze dane w końcowy CACHE (sumuje inne CACHE)
+    
