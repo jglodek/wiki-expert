@@ -1,0 +1,43 @@
+body{
+  text-align:center;
+  font-family: Helvetica;
+}
+
+h2{
+  margin: 0;
+}
+
+.contents{
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+}
+.category-choice{
+  width: 100%;
+}
+.category-choice a{
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  background: #FF937B;
+
+  -o-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.category-choice a:hover{
+  background: #F8AD7B;
+}
+.category-choice .selected{
+ background: #7BF893;
+}
+.category-choice .selected:hover{
+ background: #4EFF70;
+}
+
+.selected-results{
+  min-height:100px;
+}

@@ -1,0 +1,80 @@
+.icon{
+  width: 100px;
+  display: inline-block;
+  vertical-align:top;
+  background: #FF937B;
+  cursor: pointer;
+  text-align:center;
+  height: 100px;
+  position: relative;
+  margin: 1px;
+  -o-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+
+}
+.icon img{
+  margin: 0 auto;
+  border: none;
+}
+
+.icon p{
+  font-size: 0.8em;
+  font-weight: normal;
+  background: white;
+  background: rgba(255,255,255,0.5);
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.icon .score{
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 0.6em;
+}
+
+.icon:hover{
+  background: #F8AD7B;
+  z-index: 9999;
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+
+}
+
+.selected{
+ background: #7BF893;
+}
+
+.selected:hover{
+ background: #4EFF70;
+}
+
+
+.icon .cat-icon{
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.cat-icon{
+  background: url(/img/cat-icons.png) -115px 0;
+}
+
+.Threats .cat-icon{
+  background: url(/img/cat-icons.png) -73px -3px;
+}
+.Apps .cat-icon{
+  background: url(/img/cat-icons.png) 0 -3px;
+}
+.Fixes .cat-icon{
+  background: url(/img/cat-icons.png) -36px -3px;
+}

@@ -1,0 +1,8 @@
+ruby
+ruby mysql gem
+ruby mongo gem
+ruby bson-ext gem
+
+mediawiki system with mysql db
+
+proper configuration.rb

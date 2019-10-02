@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/icon.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+
+        <script src="js/vendor/jquery-1.9.1.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="category-choice">
+            <h2>What are you looking for(categories)?</h2>
+            <div class="contents">
+                <a data-category="Apps" data-category-choice href="#">Informations about web applications.</a>
+                <a data-category="Threats" data-category-choice href="#">Informations about threats on the internet.</a>
+                <a data-category="Fixes" data-category-choice href="#">Ways to defend myself against the web threats.</a>
+            </div>
+        </div>
+        <div class="result-preview">
+            <h2>Recommended Articles</h2>
+            <p>Choose subjects, that are most interesting to you. Click 'read' to read the article!</p>
+            <input data-query-string-input></input>
+            <div class="contents">
+                <div data-selected-results class="selected-results"></div>
+                <div data-results class="results"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $("[data-category-choice]").each(function(i,q){
+                    var el = $(q);
+                    el.click(function(){
+                        el.toggleClass("selected");
+                        runQuery(function(data){
+                            prepareIconWall(data);
+                        });
+                    });
+                });
+                $("[data-query-string-input]").bind('input propertychange', function(){
+                    runQuery(function(data){
+                        prepareIconWall(data);
+                    });
+                });
+
+                prepareIconWall = function(input){
+                    var data = input.result;
+                    data.sort(function(a, b){
+                        return a.correlation < b.correlation ? 1 : (a.correlation > b.correlation ? -1 : 0);
+                    });
+
+                    var selectedResults = $("[data-selected-results]");
+                    var results = $("[data-results]");
+                    selectedResults.html("");
+                    results.html("");
+                    data.forEach(function(el){
+                        var queriedDocIds = [];
+                        if(input.query.doc_ids != undefined){
+                            queriedDocIds = input.query.doc_ids;
+                        }
+                        var body = $("<div>")
+                            .addClass("icon")
+                            .addClass(el.categories[0])
+                            .data("id", el.id);
+                        var image = $("<img>").attr("width", "100").attr("height", "100");
+                        var caption = $("<p>").text(el.title.replace(/\_/g," "));
+                        var score = $("<span>").addClass("score").text(el.correlation.toFixed(2));
+                        var catIcon = $("<div>").addClass("cat-icon");
+                        body.append(image).append(catIcon).append(caption).append(score);
+                        body.click(function(){
+                            body.toggleClass("selected");
+                            body.animate({width: 0});
+                            ///RED ALERT:-)
+                            runQuery(function(data){
+                                prepareIconWall(data);
+                            });
+                        });
+
+                        if(queriedDocIds!=undefined && queriedDocIds.indexOf(el.id)!==-1){
+                            body.addClass("selected");
+                            selectedResults.append(body);
+                        }
+                        else{
+                            results.append(body);
+                        }
+                    });
+                };
+
+                runQuery = function(callback){
+                    var queryString = $("[data-query-string-input]").val();
+                    var docIds = []
+                    var categories = []
+                    $(".icon.selected").each(function(i,e){
+                        docIds.push($(e).data("id"));
+                    });
+                    $("[data-category-choice].selected").each(function(i,e){
+                        categories.push($(e).data("category"));
+                    });
+                    makeQuery({categories: categories, docIds: docIds, queryString: queryString}, callback);
+                };
+
+                queryForRecommendation = function(){
+                    var cat = window.category;
+                    console.log("art "+ cat);
+                };
+            });
+        </script>
+
+
+    </body>
+</html>
